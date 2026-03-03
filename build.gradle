@@ -21,8 +21,9 @@ repositories {
 dependencies { // 외보라이브러리들을 추가하는 곳 추가된 라이브러리는 자동으로 설치된다.
     implementation 'org.springframework.boot:spring-boot-starter-webmvc' // 스프링웹
     runtimeOnly 'com.mysql:mysql-connector-j' // mysql
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok' // lombok
+    annotationProcessor 'org.projectlombok:lombok' // lombok
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // JPA
 }
 
 tasks.named('test') {
