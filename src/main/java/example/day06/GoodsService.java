@@ -14,7 +14,8 @@ public class GoodsService {
 
     //저장
     public boolean 저장(GoodsDto goodsDto){
-        //dto-->entity 변환 후 저장//GoodsEntity goodsEntity = goodsDto.toEntity();
+        //dto-->entity 변환 후 저장
+        // GoodsEntity goodsEntity = goodsDto.toEntity();
         // GoodsEntity saveEntity = goodsRepositoey.save(goodsEntity);
 
         //JPA save이용하여 엔티티 insert 하기

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+   
+    
+</head>
+<body>
+    <h3>게시글 상세</h3>
+    <a href="index.html">뒤로가기</a>
+    <div id="boardBox">
+        제목: <div>제목이들어갈자리</div>
+        작성자/작성일: <div>작성자가들어갈자리/작성일 들어갈자리</div>
+        내용: <div>내용이들어갈자리</div>
+        <button onclick="수정()">수정</button>
+        <button onclick="삭제()">삭제</button>
+    </div>
+        <div id="replyBox">
+        <div>
+            댓글작성자 : <input class="cinput">
+            댓글내용 :<textarea class="ctextarea"> </textarea>
+            <button onclick="댓글등록()">댓글등록</button>
+        </div>
+        <div id="replyList">
+            <div style="margin: 20px 0px;">
+                <div><span>유재석</span><span>2026-03-06</span><span> <button>수정</button> <button>삭제</button></span></div>
+                <div> 댓글내용 자리 </div>
+            </div>
+            <div style="margin: 20px 0px;">
+                <div><span>유재석</span><span>2026-03-06</span><span> <button>수정</button> <button>삭제</button></span></div>
+                <div> 댓글내용 자리 </div>
+            </div>
+            <div style="margin: 20px 0px;">
+                <div><span>유재석</span><span>2026-03-06</span><span> <button>수정</button> <button>삭제</button></span></div>
+                <div> 댓글내용 자리 </div>
+            </div>
+        </div>
+    </div>
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src='detail.js'></script>
+</body>
+</html>

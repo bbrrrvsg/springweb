@@ -1,0 +1,24 @@
+package 종합.예제10.board.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.time.LocalDateTime;
+
+@MappedSuperclass // 해당클래스는 상속할때 엔티티 매핑 포함
+@Getter // 롬복 : 상속받은 클래스가 멤버변수 접근 허용
+@EntityListeners(AuditingEntityListener.class) // 해당클래스를 JPA감지
+public class BaseTime {
+
+    @CreatedDate // 생성날짜/시간 주입
+    private LocalDateTime createDate;
+    @LastModifiedDate // 수정날짜/시간 주입
+    private LocalDateTime updateDate;
+
+
+}
