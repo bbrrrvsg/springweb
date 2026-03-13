@@ -15,11 +15,19 @@ import lombok.NoArgsConstructor;
 public class EnrollEntity extends BaseTime{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer eno;
+    private Integer eid;
     private String ename;
 
-    @ManyToOne
-    @JoinColumn(name = "sno")
+    // 단방향
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "cid")
+    private CourseEntity courseEntity;
+
+    //단방향2 : 학생엔티티와 연결
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name="sid")
     private StudentEntity studentEntity;
+
+
 
 }

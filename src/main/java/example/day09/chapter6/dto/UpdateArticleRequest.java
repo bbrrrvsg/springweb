@@ -1,4 +1,4 @@
-package example.prcatice.practice7.dto;
+package example.day09.chapter6.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class eDto {
-    private Integer eno;
-    private String ename;
+public class UpdateArticleRequest {
+    private String title;
+    private String content;
 }

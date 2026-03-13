@@ -17,15 +17,13 @@ public class StudentEntity extends BaseTime{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer sno;
+    private Integer sid;
     private String sname;
 
-    @ManyToOne
-    @JoinColumn(name = "cno")
-    private CourseEntity courseEntity;
-
+    //양방향
     @OneToMany(mappedBy = "studentEntity")
-    @ToString.Exclude
-    @Builder.Default
-    private List<EnrollEntity> enrollEntityList = new ArrayList<>();
+    private List<EnrollEntity>enrollEntityList=new ArrayList<>();
+
+
+
 }

@@ -11,14 +11,17 @@ import java.util.List;
 public class CourseEntity extends BaseTime{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer cno;
+    private Integer cid;
 
     private String cname;
 
+    //양방향
     @OneToMany(mappedBy = "courseEntity")
-    @ToString.Exclude
-    @Builder.Default
-    private List<StudentEntity> studentEntityList = new ArrayList<>();
+    @ToString.Exclude@Builder.Default
+    private List<EnrollEntity>enrollEntityList = new ArrayList<>();
+
+
+
 
 
 }
