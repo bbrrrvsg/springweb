@@ -27,7 +27,7 @@ public class MemberDto {
 
 
     // DTO --> Entity 주로 저장
-    public MemberEntity ToEntity(){
+    public MemberEntity toEntity(){
         return MemberEntity
                 .builder()
                 .mid(mid)

@@ -25,7 +25,7 @@ public class MemberEntity extends baseTime{
     private String mname;
 
     // Emtity --> DTO 주로 조회
-    public MemberDto ToDto(){
+    public MemberDto toDto(){
         return MemberDto
                 .builder()
                 .mno(mno)
