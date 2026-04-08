@@ -2,6 +2,7 @@ package springweb.board.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import springweb.board.dto.BoardDto;
 import springweb.board.entity.BoardEntity;
@@ -9,6 +10,7 @@ import springweb.board.repository.BoardRepository;
 import springweb.member.entity.MemberEntity;
 import springweb.member.repository.MemberRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service @Transactional
@@ -44,7 +46,19 @@ public class BoardService {
         else {return false;}
     }
 
-
+    // [2] 전체조회
+    public List<BoardDto> findAll( ){
+        return boardRepository.findAll(Sort.by(Sort.Direction.DESC,"bno"))
+                .stream() // .stream 이란 여러개 자료를 갖는 자료(리스트/배열) 들의 순차적 처리 지원함수
+                .map(BoardEntity :: toDto)// map
+                .toList(); //
+    }
+    // [3] 개별조회
+    public BoardDto findById( Long bno ){
+        return boardRepository.findById(bno)
+                .orElse(null)
+                .toDto(); // 엔티티
+    }
 
 
 }

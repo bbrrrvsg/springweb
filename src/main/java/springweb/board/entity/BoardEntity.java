@@ -37,6 +37,7 @@ public class BoardEntity extends baseTime {
                 .bfile(bfile)
                 .mno(memberEntity.getMno())
                 .mname(memberEntity.getMname())
+                .createDate(getCreate_date().toString())
                 .build();
     }
 }

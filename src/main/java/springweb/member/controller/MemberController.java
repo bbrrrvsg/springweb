@@ -11,6 +11,8 @@ import springweb.member.service.MemberService;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/member")
+@CrossOrigin(origins = "http://localhost:5173")
+
 public class MemberController {
 
     private final MemberService memberService;

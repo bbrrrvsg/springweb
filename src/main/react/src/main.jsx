@@ -7,12 +7,24 @@ const root = document.querySelector('#root');
 
 
 
-import App from './practice1/App.jsx';
+
+// react web 예제
+import App from './reactweb/App.jsx';
 createRoot( root ).render( 
     <BrowserRouter>
         <App/>
     </BrowserRouter>
  ) ; // root에 최초 컴포넌트 렌더링 하기
+
+
+
+// // p1 예제
+// import App from './practice1/App.jsx';
+// createRoot( root ).render( 
+//     <BrowserRouter>
+//         <App/>
+//     </BrowserRouter>
+//  ) ; // root에 최초 컴포넌트 렌더링 하기
 
 
 

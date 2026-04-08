@@ -11,6 +11,8 @@ import springweb.member.service.JwtService;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/board")
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+
 public class BoardController {
     private final BoardService boardService;
     private final JwtService jwtService;
@@ -61,4 +63,35 @@ public class BoardController {
         boolean result = boardService.write( boardDto , loginMid );
         return  ResponseEntity.ok( result );
     }
+
+    // [1-4] 회원제 글등록 + 토큰 정보 + 첨부파일 + 쿠키
+    @PostMapping("/write4")
+    public ResponseEntity<?> write4(
+            BoardDto boardDto,
+            @CookieValue( value = "token" , required = false ) String token ){
+        // 달라진점1] @CookieValue("token") String token
+        if( token == null  ) {
+            return ResponseEntity.ok( false );
+        }
+        String loginMid = jwtService.getClaim( token );
+        if( loginMid == null ){ return ResponseEntity.ok(false); }
+        boolean result = boardService.write( boardDto , loginMid );
+        return  ResponseEntity.ok( result );
+    }
+
+
+
+    // [2] 전체조회
+    @GetMapping("/list")
+    public ResponseEntity<?> findAll( ){
+        return ResponseEntity.ok( boardService.findAll() );
+    }
+    // [3] 개별조회
+    @GetMapping("/view")
+    public ResponseEntity<?> findById( @RequestParam Long bno ){
+        return ResponseEntity.ok( boardService.findById( bno ) );
+    }
+
+
+
 }

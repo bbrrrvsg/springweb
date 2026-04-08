@@ -1,6 +1,5 @@
 package springweb.member.controller;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +9,7 @@ import springweb.member.service.MemberService;
 
 @RestController @RequiredArgsConstructor
 @RequestMapping("/api/member2")
+@CrossOrigin(origins = "http://localhost:5173" , exposedHeaders = "Authorization")
 public class MemberController2 {
 
     private final MemberService memberService;
@@ -30,9 +30,7 @@ public class MemberController2 {
                     .header("Authorization","Bearer "+token) // HTTP 통신의 부가 정보를 담는 구역 (주로 인증정보 포함)
             // 클라이언트에게 헤더에 발급받은 토큰을 반환한다. Barer token (띄어쓰기 주의)
                     .body(true); // 성공의미
-
         }
-
         // 3] 아니면 실패
         return ResponseEntity.ok( result );
     }

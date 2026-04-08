@@ -18,6 +18,7 @@ public class FileService {
 
     // [1] 업로드
     public String upload(MultipartFile uploadFile){
+        if( uploadFile == null || uploadFile.isEmpty() == true ){ return null; }
         System.out.println(uploadFile.isEmpty()); // 1) 첨부파일 존재여부 반환 , 존재하면 false
         System.out.println(uploadFile.getOriginalFilename()); // 2) 첨부파일의 파일명
         System.out.println(uploadFile.getContentType()); // 3) 첨부파일의 확장자

@@ -32,8 +32,8 @@ public class MemberEntity extends baseTime{
                 .mid(mid)
                 //.mpwd(mpwd) 주로 패스워드는 DTO로 반환하지 않는다
                 .mname(mname)
-                .update_date(getUpdate_date().toString())
-                .create_date(getCreate_date().toString())
+                .update_date(getUpdate_date() != null ? getUpdate_date().toString() : null)
+                .create_date(getCreate_date() != null ? getCreate_date().toString() : null)
                 .build();
     }
 
