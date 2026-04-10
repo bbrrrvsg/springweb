@@ -1,0 +1,83 @@
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
+
+
+export default function Write( props ){
+
+    const navigate = useNavigate();
+
+    
+ 	
+    // [1] REST API로 글쓰기 요청
+    const boardWrite = async( e ) => { e.preventDefault();
+        // 1) 입력받은 값 가져오기 
+        const btitle = e.target.btitle.value;
+        // const bcontent = e.target.bcontent.value;// textarea --> quill 변경
+        const uploadFile = e.target.uploadFile.files[0]
+        // value : 입력받은 자료  , files : file type의 등록된 파일 , files[0] : 선택된 1개파일 
+        // 2) 객체 구성 하지 않고 멀티(대용량/바이트)폼 객체 , multipart/form-data
+        const formData = new FormData(); // 대용량 폼을 지원하는 객체 
+        formData.append( 'btitle' , btitle ); // .append( 속성명 , 값 ); 대용량폼에 속성 추가한다.
+
+        formData.append( 'bcontent' , value );  // 변경 
+
+
+
+            // * 만약에 첨부파일이 존재하면 추가
+        if( uploadFile ) { formData.append( 'uploadFile', uploadFile ); }
+        // 3) AXIOS
+        const response = await axios.post( 
+            'http://localhost:8080/api/board/write4' , // 서버 주소 
+            formData , // 전송할 객체/폼
+            { withCredentials : true } // *쿠키로 변경 *
+        );
+        const data = response.data;
+        if( data == true ){ 
+            alert('글쓰기 성공');
+            navigate( "/board" );
+        }else{
+            alert("글쓰기 실패");
+        }
+    }
+
+    const [value, setValue] = useState(''); // 웹 에디터 입력닶을 갖는 상태변수 
+    // 웹 에디터 설정 변경 
+    const modules ={
+        toolbar : [
+            ["image"],
+            [ {header:[1,2,3,4]}],
+            [{list : "ordered"}, {list : "bullet"}],
+            ["bold", "italic", "underline"]
+
+        ]
+    }
+    const formats = [
+        "image",
+        "header",
+        "list",
+        "bold", "italic", "underline"
+    ]
+
+    return (<>
+        <div>
+            <h3> 글쓰기 페이지 </h3>
+            <form onSubmit={ boardWrite }>
+                제목 : <input name="btitle"  />                     <br/>
+
+                {/* 웹에디터 */}
+                <ReactQuill 
+                theme="snow" 
+                value={value}
+                onChange={setValue}
+                modules={modules}
+                formats={formats} />
+
+                첨부파일 : <input name="uploadFile" type="file" />  <br/>
+                <button type="submit"> 등록하기 </button>
+            </form>
+        </div>
+    </>)
+}
