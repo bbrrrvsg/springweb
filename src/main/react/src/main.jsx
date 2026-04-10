@@ -9,7 +9,7 @@ const root = document.querySelector('#root');
 
 
 // react web 예제
-import App from './reactweb/App.jsx';
+import App from './manager/App.jsx';
 createRoot( root ).render( 
     <BrowserRouter>
         <App/>
